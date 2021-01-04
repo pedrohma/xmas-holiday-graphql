@@ -1,0 +1,33 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Gift {
+    id: ID!
+    description: String
+    received: Boolean!
+    url: String,
+    date_created: String
+}
+
+type GiftResult {
+    success: Boolean!
+    errors: [String]
+    gift: Gift
+}
+
+type GiftsResult {
+    success: Boolean!
+    errors: [String]
+    gifts: [Gift]
+}
+
+type Query {
+    gifts: GiftsResult!
+    gift(id: ID): GiftResult!
+}
+
+type Mutation {
+    create(description: String, url: String): GiftResult!
+}

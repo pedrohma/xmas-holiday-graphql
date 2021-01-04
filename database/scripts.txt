@@ -1,0 +1,14 @@
+python
+
+from main import db
+db.create_all()
+
+from datetime import datetime
+from api.models import Gift
+
+today = datetime.today().date()
+gift = Gift(description="Fender Telecaster", date_created=today, received=False, url="https://shop.fender.com/en-US/electric-guitars/telecaster/")
+gift.to_dict()
+
+db.session.add(gift)
+db.session.commit()
